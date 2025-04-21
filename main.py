@@ -1,5 +1,4 @@
 import json
-import os
 from datetime import date
 from functools import partial
 import requests
