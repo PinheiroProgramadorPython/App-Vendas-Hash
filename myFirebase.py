@@ -47,7 +47,6 @@ class FireBase:
         requicao = requests.post(link,data=info)
         requicao_dic = requicao.json()
         if requicao.ok:
-            print('Conta Criada com Sucesso!')
             localId = requicao_dic['localId']
             idToken = requicao_dic['idToken']
             refreshToken = requicao_dic['refreshToken']

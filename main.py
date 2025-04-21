@@ -3,6 +3,8 @@ import os
 from datetime import date
 from functools import partial
 import requests
+import os
+import certifi
 from kivy.app import App
 from kivy.lang import Builder
 from bannervenda import BannerVenda
@@ -10,6 +12,9 @@ from bannervendedor import BannerVendedor
 from botoes import *
 from telas import *
 from myFirebase import FireBase
+
+
+os.environ["SSL_CERT_FILE"] = certifi.where()
 
 
 GUI = Builder.load_file('main.kv')
@@ -100,7 +105,6 @@ class MainApp(App):
         else:
             requisicao = requests.get(f'https://aplicativovendashashtag-c22e2-default-rtdb.firebaseio.com/{self.localId}.json')
             requisicao_dic = requisicao.json()
-            print(requisicao_dic)
             # preencher foto do perfil
             avatar = requisicao_dic['avatar']
             self.foto_perfil = avatar
@@ -176,7 +180,6 @@ class MainApp(App):
             if id_vendedor in equipe:
                 mensagem_id_vendedor.text = 'Esse Vendedor já Esta na sua Equipe!'
             else:
-                print(equipe)
                 equipe = self.equipe + f',{id_vendedor}'
                 info = {"equipe":equipe}
                 requests.patch(f'https://aplicativovendashashtag-c22e2-default-rtdb.firebaseio.com/{self.localId}.json',data=json.dumps(info))

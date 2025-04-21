@@ -24,7 +24,6 @@ class BannerVendedor(FloatLayout):
         requisicao2 = requests.get(link)
         requisicao_dict = requisicao2.json()
         valor = list(requisicao_dict.values())[0]
-        print(valor)
         avatar = valor['avatar']
         total_vendas = valor['total_vendas']
 
