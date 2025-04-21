@@ -1,0 +1,122 @@
+<AdicionarVendas>
+    FloatLayout:
+        canvas:
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: 'icones/bg1.png'
+
+        Label:
+            pos_hint: {'right': 1 , 'top': 1}
+            size_hint: 1 , 0.05
+            text: 'Selecione um Cliente'
+            id: label_selecionar_cliente
+        ScrollView:
+            pos_hint: {'right': 1 , 'top': 0.95}
+            size_hint: 1 , 0.15
+            GridLayout:
+                id: lista_clientes
+                rows: 1
+                size_hint_x: None
+                width: self.minimum_width
+                col_default_width: '100dp'
+                col_force_width: True
+
+
+        Label:
+            pos_hint: {'right': 1 , 'top': 0.8}
+            size_hint: 1 , 0.05
+            text: 'Selecione um Produto'
+            id: label_selecionar_produto
+        ScrollView:
+            pos_hint: {'right': 1 , 'top': 0.75}
+            size_hint: 1 , 0.15
+            GridLayout:
+                id: lista_produtos
+                rows: 1
+                size_hint_x: None
+                width: self.minimum_width
+                col_default_width: '100dp'
+                col_force_width: True
+        Label:
+            text: 'Data: 10/04/2025'
+            id: label_data
+            pos_hint: {'right': 1 , 'top': 0.6}
+            size_hint: 1 , 0.05
+
+        GridLayout:
+            pos_hint: {'right': 1 , 'top': 0.50}
+            size_hint: 1 , 0.05
+            cols: 3
+            LabelButton:
+                text: 'Kilos'
+                id: unidade_kilos
+                pos_hint: {'right': 0.3 , 'top': 1}
+                size_hint: 0.3 , 0.05
+                on_release: app.selecionar_unidade('unidade_kilos')
+            LabelButton:
+                text: 'Unidades'
+                id: unidade_unidades
+                pos_hint: {'right': 0.7 , 'top': 1}
+                size_hint: 0.3 , 0.05
+                on_release: app.selecionar_unidade('unidade_unidades')
+            LabelButton:
+                text: 'Litros'
+                id: unidade_litros
+                pos_hint: {'right': 1 , 'top': 1}
+                size_hint: 0.3 , 0.05
+                on_release: app.selecionar_unidade('unidade_litros')
+
+        LabelButton:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/botao.png' if self.state == 'normal' else 'icones/botao_apertado.png'
+            pos_hint: {'right': 0.9 , 'top':0.15}
+            size_hint: 0.40 , 0.15
+            text: 'Adicionar Venda'
+            id: adicionar_venda
+            on_release: app.selecionar_venda()
+
+        LabelButton:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/botao.png' if self.state == 'normal' else 'icones/botao_apertado.png'
+            pos_hint: {'right': 0.5 , 'top':0.15}
+            size_hint: 0.40 , 0.15
+            text: 'Cancelar'
+            id: cancelar
+            on_release: app.mudar_tela('homepage')
+
+
+        GridLayout:
+            pos_hint: {'right': 0.9 , 'top': 0.45}
+            size_hint: 0.8 , 0.15
+            cols: 2
+            Label:
+                text: 'Preço Total (R$)'
+                pos_hint: {'right': 0.2 , 'top': 0.85}
+                size_hint: 0.2 , 0.7
+            TextInput:
+                hint_text: 'somente numeros'
+                pos_hint: {'right': 1 , 'top': 1}
+                size_hint: 0.4 , 1
+                id: input_preco_total
+
+        GridLayout:
+            pos_hint: {'right': 0.9 , 'top': 0.30}
+            size_hint: 0.8 , 0.15
+            cols: 2
+            Label:
+                text: 'Quantidade Total'
+                pos_hint: {'right': 0.2 , 'top': 0.85}
+                size_hint: 0.2 , 0.7
+            TextInput:
+                hint_text: '0'
+                pos_hint: {'right': 0.1 , 'top': 1}
+                size_hint: 0.4 , 1
+                id: input_quantidade

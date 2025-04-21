@@ -1,0 +1,51 @@
+<FotoPerfil>
+    FloatLayout:
+        canvas:
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: 'icones/bg1.png'
+
+        Label:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/botao_fino.png'
+            pos_hint: {'right': 0.9, 'top':1}
+            size_hint: 0.9 , 0.1
+            text: 'Selecione a Foto do Perfil'
+            id: label_foto_perfil
+
+        # lista de fotos do perfil
+        ScrollView:
+            pos_hint: {'right': 1, 'top': 0.9}
+            size_hint: 1 , 0.8
+            GridLayout:
+                id: lista_fotos_perfil
+                cols:3
+                spacing: 5,5
+
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: '120dp'
+                row_force_height: True
+
+
+
+        # Botão Voltar
+        FloatLayout:
+            pos_hint: {'right':1 , 'top':0.10}
+            size_hint: 1 , 0.10
+            canvas:
+                Color:
+                    rgb: utils.get_color_from_hex('#ADD8E6')
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            ImageButton:
+                pos_hint: {'right':0.1 , 'top':0.9}
+                size_hint: 0.1 , 0.7
+                source: 'icones/voltar.png'
+                on_release: app.mudar_tela('ajustes')

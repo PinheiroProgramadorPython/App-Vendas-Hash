@@ -1,0 +1,14 @@
+{
+  "rules": {
+    ".read": "query.orderByChild == 'id_vendedor'",
+    ".indexOn": ["id_usuario"],
+    "proximo_id_vendedor": {
+      ".read": "auth.uid !== null",
+      ".write": "auth.uid !== null"
+    },
+    "$uid": {
+      ".read": "$uid === auth.uid",
+      ".write": "$uid === auth.uid"
+    },
+  }
+}
