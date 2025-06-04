@@ -1,2 +1,2 @@
 # App-Vendas-Hash
-Aplicativo Desenvolvido durante o Curso Python Impressionador na Hashtag
+Aplicativo Desenvolvido com Kivy durante o Curso Python Impressionador na Hashtag
